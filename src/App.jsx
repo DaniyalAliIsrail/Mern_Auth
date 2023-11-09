@@ -1,3 +1,4 @@
+import Dashboard from "./components/Dashboard"
 import Header from "./components/Header"
 import Login from "./components/Login"
 import Register from "./components/Register"
@@ -9,6 +10,8 @@ function App() {
     <Routes>
       <Route path="/" element={<Login /> }/>
       <Route path="/register" element={<Register /> }/>
+      <Route path="/dashboard" element={<Dashboard /> }/>
+
     </Routes>
     </>
   )

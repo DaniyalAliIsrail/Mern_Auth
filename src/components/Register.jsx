@@ -1,4 +1,3 @@
-
 import "./mix.css";
 import React, { useState } from 'react';
 import { NavLink } from "react-router-dom";
@@ -25,7 +24,6 @@ const Register = () => {
     const addUserdata = async (e) => {
         e.preventDefault();
         const { fname, email, password, cpassword } = inpval;
-
         if (!fname || !email || !password || !cpassword) {
             alert("Please fill up all input fields.");
         } else if (!email.includes("@")) {
@@ -44,6 +42,10 @@ const Register = () => {
                     password,
                     cpassword
                 });
+                if(response.status == 200){
+                    alert("user signup successfully");
+                    setInpval({...inpval,fname:"",email:"",password:"",cpassword:""})
+                }
                 console.log(response.data);
             } catch (error) {
                 console.error("Error:", error);

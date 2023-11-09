@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import axios from 'axios';
 import { NavLink } from 'react-router-dom';
 import "./mix.css";
 
@@ -8,9 +9,9 @@ const Login = () => {
         email: "",
         password: ""
     })
-    console.log(inpval);
+    // console.log(inpval);
     const setVal = (e) => {
-        const { name, value } = e.target
+        const { name, value } = e.target //dstructure name and value
         setInpVal(() => {
             return {
                 ...inpval,
@@ -18,7 +19,7 @@ const Login = () => {
             }
         })
     }
-    const loginUser = (e) => {
+    const loginUser = async (e) => {
         e.preventDefault();
         const { email, password } = inpval;
         console.log(inpval);
@@ -30,8 +31,23 @@ const Login = () => {
             alert("please must be 8 char")
         }
         else {
-            alert("Login sucessfully")
+            try {
+                const response = await axios.post("http://localhost:8000/login", {
+                    email, password
+                })
+                if(response.status == 200){
+                    // console.log(response.data.result.token);
+                    // alert("login successfully")
+                    localStorage.setItem("userdatatoken",response.data.result.token)
+                    setInpVal({...inpval, email:"", password:""})
+                }
+                console.log(response);
+            } catch (error) {
+                console.log("error email and passoword not valid");
+                console.error("Error:", error);
+            }
         }
+
     }
     return (
         <>
@@ -61,7 +77,7 @@ const Login = () => {
 
                         <button className='btn' onClick={loginUser}>Login</button>
                         <p>Don't have an Account?<NavLink to="/register">Sign Up</NavLink> </p>
-                        
+
                     </form>
                 </div>
             </section>
