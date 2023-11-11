@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import axios from 'axios';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import "./mix.css";
 
 const Login = () => {
     const [passShow, setPassShow] = useState(false);
+    const history =useNavigate()
     const [inpval, setInpVal] = useState({
         email: "",
         password: ""
@@ -39,6 +40,7 @@ const Login = () => {
                     console.log(response.data.result.token);
                     // alert("login successfully")
                     localStorage.setItem("userdatatoken",response.data.result.token)
+                    history("/dashboard")
                     setInpVal({...inpval, email:"", password:""})
                 }
                 console.log(response);
