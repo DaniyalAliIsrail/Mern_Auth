@@ -36,7 +36,7 @@ const Login = () => {
                     email, password
                 })
                 if(response.status == 200){
-                    // console.log(response.data.result.token);
+                    console.log(response.data.result.token);
                     // alert("login successfully")
                     localStorage.setItem("userdatatoken",response.data.result.token)
                     setInpVal({...inpval, email:"", password:""})
