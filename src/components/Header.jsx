@@ -12,7 +12,7 @@ import axios from 'axios';
 const Header = () => {
   const { logindata, setLoginData } = useContext(LoginContext);
   const history = useNavigate()
-  console.log(logindata);
+  // console.log(logindata);
   const [anchorEl, setAnchorEl] = React.useState(null)
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -37,17 +37,17 @@ const Header = () => {
           'Authorization': `Bearer ${token}`,
           'Accept': 'application/json',
         },
-        withCredentials: true // Modified to 'true' for cross-origin requests
+        credentials: true // Modified to 'true' for cross-origin requests
       });
-      const data = response.data;
-      console.log(data);
-      if (data.status == 200) {
-        console.log("User logged out");
-        localStorage.removeItem('userdatatoken');
-        setLoginData(false);
-        history("/");
+      const data = response;
+      console.log(response.data);
+      if (data.status === 200) {
+        console.log("User logout");
+         localStorage.removeItem('userdatatoken');
+        setLoginData(false)
+        history("/")
       } else {
-        console.error('Logout failed');
+       console.log("error");
       }
     } catch (error) {
       console.log(error);

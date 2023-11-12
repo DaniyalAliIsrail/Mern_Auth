@@ -4,6 +4,8 @@ import Header from "./components/Header"
 import Login from "./components/Login"
 import Register from "./components/Register"
 import {Routes,Route} from "react-router-dom"
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 function App() {
   return (
     <>
@@ -13,8 +15,6 @@ function App() {
       <Route path="/register" element={<Register /> }/>
       <Route path="/dashboard" element={<Dashboard /> }/>
       <Route path="*" element={<Error /> }/>
-
-
     </Routes>
     </>
   )
