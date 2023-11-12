@@ -4,6 +4,7 @@ export const LoginContext = createContext("");
 
 const Context = ({children}) => {
 
+    //global state hay isay ham ksy bhy component may use kar sakrtay hay:
     const [logindata,setLoginData] = useState("");
     console.log(logindata);
 

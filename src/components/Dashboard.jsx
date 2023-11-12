@@ -25,13 +25,13 @@ const Dashboard = () => {
         },
       });
       const data = response.data
-      console.log(data.validUserOne);
+      console.log(data.validUserOne.fname);
     
       if(data.status == 400 || !data){
         history("*")
       }else{
         console.log("verify user");
-        setLoginData(data.validUserOne) //data bhjdeya login contect ko 
+        setLoginData(data) //data bhjdeya login contect ko 
       }
     } catch (error) {
       console.error(error);
@@ -45,7 +45,7 @@ const Dashboard = () => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <img src={MANPIC} style={{ width: '200px', marginTop: 20 }} alt="" />
-      <h1>email: {logindata ? logindata.fname:""} {logindata ? logindata.email : ""}</h1>
+      <h1>email: {logindata ? logindata.validUserOne.fname:""} {logindata ? logindata.validUserOne.email : ""}</h1>
     </div>
   );
 };
