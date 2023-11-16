@@ -29,9 +29,9 @@ const Header = () => {
   }
   const logoutUser = async () => {
     const token = localStorage.getItem('userdatatoken');
-    console.log(token);
+    // console.log(token);
     try {
-      const response = await axios.get('http://localhost:8000/logout',{
+      const response = await axios.get('https://cute-cyan-hatchling-coat.cyclic.app/logout',{
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`,
@@ -40,7 +40,7 @@ const Header = () => {
         credentials: true // Modified to 'true' for cross-origin requests
       });
       const data = response;
-      console.log(response.data);
+      // console.log(response.data);
       if (data.status === 200) {
         console.log("User logout");
          localStorage.removeItem('userdatatoken');

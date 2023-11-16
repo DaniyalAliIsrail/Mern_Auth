@@ -18,7 +18,7 @@ const Dashboard = () => {
         console.error('Token not found in localStorage.');
         return;
       }
-      const response = await axios.get('http://localhost:8000/validuser', {
+      const response = await axios.get('https://cute-cyan-hatchling-coat.cyclic.app/validuser', {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`,
